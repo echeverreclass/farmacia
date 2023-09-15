@@ -143,4 +143,33 @@ public class UsuarioBD {
             return null;
         }
     }
+    
+    public DefaultTableModel buscarUsuario(String apellidos) {
+        DefaultTableModel modelo;
+        String[] titulos = {"DNI", "NOMBRES", "APELLIDOS", "DIRECCION", "CLAVE","CELULAR", "TIPO_USUARIO", "TIENDA"};
+        String[] registros = new String[8];
+        modelo = new DefaultTableModel(null, titulos);
+        sql = "SELECT uDni, uNombre,uApellidos,uDireccion,uClave,uCelular,tunombre,tienda  FROM usuario AS u"
+                + " INNER JOIN tipousuario AS tp ON u.idtipousuario=tp.idtipousuario "
+                + "WHERE uApellidos LIKE '%" + apellidos + "%' OR uNombre LIKE '%"+apellidos+"%'";
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                registros[0] = rs.getString("uDni");
+                registros[1] = rs.getString("uNombre");
+                registros[2] = rs.getString("uApellidos");
+                registros[3] = rs.getString("uDireccion");
+                registros[4] = rs.getString("uClave");
+                registros[5] = rs.getString("uCelular");
+                registros[6] = rs.getString("tunombre");
+                registros[7] = rs.getString("tienda");
+                modelo.addRow(registros);
+            }
+            return modelo;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Problemas al buscar Usuario", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
 }

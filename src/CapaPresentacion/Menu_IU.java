@@ -132,12 +132,14 @@ public class Menu_IU extends javax.swing.JFrame {
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 726, Short.MAX_VALUE)
+            .addGap(0, 724, Short.MAX_VALUE)
         );
 
         jMenuBar1.setBackground(new java.awt.Color(153, 204, 255));
 
+        jMenu1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jMenu1.setText("MANTENIMIENTO");
+        jMenu1.setFont(new java.awt.Font("Calibri", 1, 15)); // NOI18N
 
         menu_item_tipoUsuario.setText("Tipo de Usuarios");
         menu_item_tipoUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -165,16 +167,24 @@ public class Menu_IU extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jMenu2.setText("COMPRAS");
+        jMenu2.setFont(new java.awt.Font("Calibri", 1, 15)); // NOI18N
         jMenuBar1.add(jMenu2);
 
+        jMenu5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jMenu5.setText("INVENTARIO");
+        jMenu5.setFont(new java.awt.Font("Calibri", 1, 15)); // NOI18N
         jMenuBar1.add(jMenu5);
 
+        jMenu6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jMenu6.setText("VENTAS");
+        jMenu6.setFont(new java.awt.Font("Calibri", 1, 15)); // NOI18N
         jMenuBar1.add(jMenu6);
 
+        jMenu7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jMenu7.setText("CAJA");
+        jMenu7.setFont(new java.awt.Font("Calibri", 1, 15)); // NOI18N
         jMenuBar1.add(jMenu7);
 
         setJMenuBar(jMenuBar1);

@@ -8,6 +8,9 @@ package CapaPresentacion;
 import CapaDatos.Turno;
 import CapaNegocio.TurnoBD;
 import CapaNegocio.UsuarioBD;
+import static CapaPresentacion.Usuario_IU.txtDni;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -115,9 +118,26 @@ public class Turno_IU extends javax.swing.JInternalFrame {
         setMaximizable(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del usuario"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
         jLabel1.setText("DNI");
+
+        txtDni.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDniFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDniFocusLost(evt);
+            }
+        });
+        txtDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDniKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDniKeyTyped(evt);
+            }
+        });
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupa.gif"))); // NOI18N
         btnBuscar.setText("BUSCAR");
@@ -128,6 +148,24 @@ public class Turno_IU extends javax.swing.JInternalFrame {
         });
 
         jLabel2.setText("USUARIO");
+
+        txtUsuario.setEnabled(false);
+        txtUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtUsuarioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUsuarioFocusLost(evt);
+            }
+        });
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -164,11 +202,39 @@ public class Turno_IU extends javax.swing.JInternalFrame {
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Turno"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del Turno", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
         jLabel3.setText("HORA DE INICIO");
 
-        jLabel4.setText("HORA DE INICIO");
+        txtHoraInicio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtHoraInicioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtHoraInicioFocusLost(evt);
+            }
+        });
+        txtHoraInicio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtHoraInicioKeyPressed(evt);
+            }
+        });
+
+        jLabel4.setText("HORA FINAL");
+
+        txtHoraFinal.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtHoraFinalFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtHoraFinalFocusLost(evt);
+            }
+        });
+        txtHoraFinal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtHoraFinalKeyPressed(evt);
+            }
+        });
 
         jLabel5.setText("TURNO");
 
@@ -205,10 +271,10 @@ public class Turno_IU extends javax.swing.JInternalFrame {
                 .addComponent(txtHoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cmbTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -287,7 +353,7 @@ public class Turno_IU extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(btnCerrar))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -387,6 +453,92 @@ public class Turno_IU extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void txtDniFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDniFocusGained
+        // TODO add your handling code here:
+        txtDni.setBackground(Color.yellow);
+    }//GEN-LAST:event_txtDniFocusGained
+
+    private void txtDniFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDniFocusLost
+        // TODO add your handling code here:
+        
+        txtDni.setBackground(Color.white);
+    }//GEN-LAST:event_txtDniFocusLost
+
+    private void txtUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusGained
+        // TODO add your handling code here:
+        txtUsuario.setBackground(Color.yellow);
+    }//GEN-LAST:event_txtUsuarioFocusGained
+
+    private void txtUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusLost
+        // TODO add your handling code here:
+        txtUsuario.setBackground(Color.white);
+    }//GEN-LAST:event_txtUsuarioFocusLost
+
+    private void txtHoraInicioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoraInicioFocusGained
+        // TODO add your handling code here:
+        
+        txtHoraInicio.setBackground(Color.yellow);
+    }//GEN-LAST:event_txtHoraInicioFocusGained
+
+    private void txtHoraInicioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoraInicioFocusLost
+        // TODO add your handling code here:
+        txtHoraInicio.setBackground(Color.white);
+    }//GEN-LAST:event_txtHoraInicioFocusLost
+
+    private void txtHoraFinalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoraFinalFocusGained
+        // TODO add your handling code here:
+        txtHoraFinal.setBackground(Color.yellow);
+    }//GEN-LAST:event_txtHoraFinalFocusGained
+
+    private void txtHoraFinalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoraFinalFocusLost
+        // TODO add your handling code here:
+        txtHoraFinal.setBackground(Color.white);
+    }//GEN-LAST:event_txtHoraFinalFocusLost
+
+    private void txtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c) || txtDni.getText().length() >= 8) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDniKeyTyped
+
+    private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtUsuarioKeyTyped
+
+    private void txtDniKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnBuscar.requestFocus();
+            btnBuscar.doClick();
+            txtHoraInicio.requestFocus();
+        }
+    }//GEN-LAST:event_txtDniKeyPressed
+
+    private void txtUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            txtHoraInicio.requestFocus();
+        }
+    }//GEN-LAST:event_txtUsuarioKeyPressed
+
+    private void txtHoraInicioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHoraInicioKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            txtHoraFinal.requestFocus();
+        }
+    }//GEN-LAST:event_txtHoraInicioKeyPressed
+
+    private void txtHoraFinalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHoraFinalKeyPressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtHoraFinalKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

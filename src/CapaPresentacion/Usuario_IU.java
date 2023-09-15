@@ -447,11 +447,12 @@ public class Usuario_IU extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmbTienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnCerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -487,22 +488,22 @@ public class Usuario_IU extends javax.swing.JInternalFrame {
 
     private void txtBuscarApellidosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarApellidosKeyPressed
         // TODO add your handling code here:
-//        try {
-//            setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
-//            DefaultTableModel tabla_temporal;
-//            String apellidos = txtBuscarApellidos.getText().toString();
-//            
-//            UsuarioBD oUsuarioBD = new UsuarioBD();
-//            //tabla_temporal = oUsuarioBD.buscarUsuario(apellidos);
-//            tabla_reporte_usuarios.setModel(tabla_temporal);
-//            int cantLista = tabla_temporal.getRowCount();
-//            txtCantidad.setText("" + cantLista);
-//            setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-//            
-//        } catch (Exception ex) {
-//            setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-//            ex.printStackTrace();
-//        }
+        try {
+            setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+            DefaultTableModel tabla_temporal;
+            String apellidos = txtBuscarApellidos.getText().toString();
+            
+            UsuarioBD oUsuarioBD = new UsuarioBD();
+            tabla_temporal = oUsuarioBD.buscarUsuario(apellidos);
+            tabla_reporte_usuarios.setModel(tabla_temporal);
+            int cantLista = tabla_temporal.getRowCount();
+            txtCantidad.setText("" + cantLista);
+            setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+            
+        } catch (Exception ex) {
+            setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_txtBuscarApellidosKeyPressed
 
     private void txtBuscarApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarApellidosKeyTyped
@@ -534,7 +535,7 @@ public class Usuario_IU extends javax.swing.JInternalFrame {
     private void txtCelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCelularKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if (!Character.isDigit(c) || txtDni.getText().length() >= 9) {
+        if (!Character.isDigit(c) || txtCelular.getText().length() >= 9) {
             evt.consume();
         }
     }//GEN-LAST:event_txtCelularKeyTyped
@@ -571,7 +572,7 @@ public class Usuario_IU extends javax.swing.JInternalFrame {
     private void txtDniKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyPressed
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            txtClave.requestFocus();
+            txtNombres.requestFocus();
         }
     }//GEN-LAST:event_txtDniKeyPressed
 
@@ -596,8 +597,7 @@ public class Usuario_IU extends javax.swing.JInternalFrame {
     private void txtClaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtClaveKeyPressed
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            btnRegistrar.requestFocus();
-            btnRegistrar.doClick();
+            txtCelular.requestFocus();
         }
     }//GEN-LAST:event_txtClaveKeyPressed
 
@@ -817,7 +817,7 @@ public class Usuario_IU extends javax.swing.JInternalFrame {
     private void txtDireccionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionKeyPressed
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            txtCelular.requestFocus();
+            txtClave.requestFocus();
         }
     }//GEN-LAST:event_txtDireccionKeyPressed
 

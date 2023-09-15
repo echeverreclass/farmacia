@@ -7,6 +7,8 @@ package CapaPresentacion;
 
 import CapaDatos.TipoUsuario;
 import CapaNegocio.TipoUsuarioBD;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -99,6 +101,23 @@ public class TipoUsuario_IUU extends javax.swing.JInternalFrame {
         });
 
         jLabel2.setText("NOMBRE");
+
+        txtNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreFocusLost(evt);
+            }
+        });
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
 
         jLabel3.setText("CANTIDAD");
 
@@ -306,6 +325,34 @@ public class TipoUsuario_IUU extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void txtNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusGained
+        // TODO add your handling code here:
+        
+        txtNombre.setBackground(Color.yellow);
+    }//GEN-LAST:event_txtNombreFocusGained
+
+    private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnRegistrar.requestFocus();
+            btnRegistrar.doClick();
+        }
+    }//GEN-LAST:event_txtNombreKeyPressed
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
+        // TODO add your handling code here:
+        
+        txtNombre.setBackground(Color.white);
+    }//GEN-LAST:event_txtNombreFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
