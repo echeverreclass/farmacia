@@ -27,6 +27,7 @@ public class Turno_IU extends javax.swing.JInternalFrame {
      */
     public Turno_IU() {
         initComponents();
+        reportar();
     }
 
     private void limpiar_tabla_formulario() {
@@ -116,6 +117,7 @@ public class Turno_IU extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        setTitle("TURNO");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N

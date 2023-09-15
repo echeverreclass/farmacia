@@ -89,6 +89,7 @@ public class TipoUsuario_IUU extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        setTitle("TIPO USUARIOS");
 
         txtCodigo.setEnabled(false);
 
@@ -169,6 +170,11 @@ public class TipoUsuario_IUU extends javax.swing.JInternalFrame {
 
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar.png"))); // NOI18N
         btnLimpiar.setText("LIMPIAR");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -353,6 +359,12 @@ public class TipoUsuario_IUU extends javax.swing.JInternalFrame {
         
         txtNombre.setBackground(Color.white);
     }//GEN-LAST:event_txtNombreFocusLost
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+        txtNombre.setText("");
+        txtNombre.requestFocus();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
