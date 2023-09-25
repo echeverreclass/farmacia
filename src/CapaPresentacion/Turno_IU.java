@@ -51,6 +51,7 @@ public class Turno_IU extends javax.swing.JInternalFrame {
                 String fin = tabla_temporal.getValueAt(i, 3).toString();
                 String uDni = tabla_temporal.getValueAt(i, 4).toString();
                 Object[] data = {idturno, descripcion, inicio, fin, uDni};
+                tabla_temporal_turno.addRow(data);
             }
             tabla_reporte_turno.setModel(tabla_temporal);
 
