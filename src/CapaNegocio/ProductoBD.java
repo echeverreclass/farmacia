@@ -30,7 +30,7 @@ public class ProductoBD {
         sql = "SELECT pSerie,pDescripcion,pObservacion,digemi,pCondicion,catNombre, maNombre,mPresentacion,c.idcategoria,m.idmarca,me.idmedida FROM producto AS p "
                 + "INNER JOIN marca AS m ON p.idmarca=m.idmarca "
                 + "INNER JOIN medida AS me ON p.idmedida=me.idmedida "
-                + "INNER JOIN categoria AS c ON p.idcategoria=c.idcategoria LIMIT 0,20";
+                + "INNER JOIN categoria AS c ON p.idcategoria=c.idcategoria";
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);

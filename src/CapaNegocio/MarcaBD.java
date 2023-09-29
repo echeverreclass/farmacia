@@ -103,7 +103,7 @@ public class MarcaBD {
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, "%"+nombre+"%");
-            ResultSet rs = pst.executeQuery(sql);
+            ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 registros[0] = rs.getString("idmarca");
                 registros[1] = rs.getString("maNombre");

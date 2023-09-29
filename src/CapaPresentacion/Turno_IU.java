@@ -121,7 +121,7 @@ public class Turno_IU extends javax.swing.JInternalFrame {
         setTitle("TURNO");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del usuario", 0, 0, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
         jLabel1.setText("DNI");
 
@@ -205,7 +205,7 @@ public class Turno_IU extends javax.swing.JInternalFrame {
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del Turno", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del Turno", 0, 0, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
         jLabel3.setText("HORA DE INICIO");
 
@@ -307,7 +307,15 @@ public class Turno_IU extends javax.swing.JInternalFrame {
             new String [] {
                 "ID", "DESCRIPCION", "HORA INICIO", "HORA FINAL", "USUARIO"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tabla_reporte_turno.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tabla_reporte_turnoMousePressed(evt);

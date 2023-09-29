@@ -13,7 +13,7 @@ import CapaNegocio.CategoriaBD;
 import CapaNegocio.MarcaBD;
 import CapaNegocio.MedidaBD;
 import CapaNegocio.ProductoBD;
-import static CapaPresentacion.Menu_IU.escritorio;
+import static CapaPresentacion.Menuu_IU.escritorioo;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ItemEvent;
@@ -349,7 +349,7 @@ public class Producto_IU extends javax.swing.JInternalFrame {
         txtCodigoMedida.setEnabled(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar Productos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar Productos", 0, 0, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         jLabel4.setText("PRODUCTO");
 
@@ -400,6 +400,12 @@ public class Producto_IU extends javax.swing.JInternalFrame {
             }
         ));
         jScrollPane1.setViewportView(tabla_reporte_producto);
+        if (tabla_reporte_producto.getColumnModel().getColumnCount() > 0) {
+            tabla_reporte_producto.getColumnModel().getColumn(0).setPreferredWidth(30);
+            tabla_reporte_producto.getColumnModel().getColumn(1).setPreferredWidth(200);
+            tabla_reporte_producto.getColumnModel().getColumn(2).setPreferredWidth(20);
+            tabla_reporte_producto.getColumnModel().getColumn(3).setPreferredWidth(20);
+        }
 
         btnComposicion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/application_2.png"))); // NOI18N
         btnComposicion.setText("COMPOSICION");
@@ -967,8 +973,8 @@ public class Producto_IU extends javax.swing.JInternalFrame {
     private void btnComposicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComposicionActionPerformed
         // TODO add your handling code here:
         Composicion_IU frame = new Composicion_IU();
-        escritorio.add(frame);
-        Dimension a = escritorio.getSize();
+        escritorioo.add(frame);
+        Dimension a = escritorioo.getSize();
         Dimension b = frame.getSize();
         frame.setLocation((a.width - b.width) / 2, (a.height - b.height) / 2);
         frame.show();
