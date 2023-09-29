@@ -307,7 +307,7 @@ public class Login_IU extends javax.swing.JFrame {
                             oMenu.btnCerrar.setEnabled(true);
 
                             oMenu.setVisible(true);
-                            oMenu.setTitle("TIENDA: " + tienda + " - USUARIO: " + usuario);
+                            oMenu.setTitle("TIENDA: " + tienda + " - USUARIO: " + usuario + " - ADMINISTRADOR");
                             this.setVisible(false);
                         }
                         if (tipo == 3) {
@@ -327,7 +327,7 @@ public class Login_IU extends javax.swing.JFrame {
                                 } else {
                                     idasistencia = lista.get(0).getIdasistencia();
                                     oMenu.setVisible(true);
-                                    oMenu.setTitle("TIENDA: " + tienda + " - USUARIO: " + usuario);
+                                    oMenu.setTitle("TIENDA: " + tienda + " - USUARIO: " + usuario + " - VENDEDOR(A)");
                                     this.setVisible(false);
                                 }
                             } else {
