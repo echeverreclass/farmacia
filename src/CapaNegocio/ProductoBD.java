@@ -24,7 +24,7 @@ public class ProductoBD {
 
     public DefaultTableModel reportarProducto() {
         DefaultTableModel tabla_temporal;
-        String[] titulos = {"SERIE", "DESCRIPCION", "OBSERVACION", "DIGEMI", "CONDICION", "CATEGORIA", "MARCA", "PRESENTACION", "ID_CAT", "ID:MA", "ID_ME"};
+        String[] titulos = {"SERIE", "DESCRIPCION", "OBSERVACION", "DIGEMI", "CONDICION", "CATEGORIA", "MARCA", "PRESENTACION", "ID_CAT", "ID_MA", "ID_ME"};
         String[] registros = new String[11];
         tabla_temporal = new DefaultTableModel(null, titulos);
         sql = "SELECT pSerie,pDescripcion,pObservacion,digemi,pCondicion,catNombre, maNombre,mPresentacion,c.idcategoria,m.idmarca,me.idmedida FROM producto AS p "
