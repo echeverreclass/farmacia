@@ -64,6 +64,11 @@ public class Menuu_IU extends javax.swing.JFrame {
         jSeparator10 = new javax.swing.JPopupMenu.Separator();
         jMenuItem12 = new javax.swing.JMenuItem();
         menu_inventario = new javax.swing.JMenu();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jSeparator11 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jSeparator12 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem15 = new javax.swing.JMenuItem();
         menu_ventas = new javax.swing.JMenu();
         menu_caja = new javax.swing.JMenu();
 
@@ -270,6 +275,33 @@ public class Menuu_IU extends javax.swing.JFrame {
         menu_inventario.setText("INVENTARIO");
         menu_inventario.setEnabled(false);
         menu_inventario.setFont(new java.awt.Font("Calibri", 1, 15)); // NOI18N
+
+        jMenuItem13.setText("Entrada de Productos");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
+        menu_inventario.add(jMenuItem13);
+        menu_inventario.add(jSeparator11);
+
+        jMenuItem14.setText("Dinero en Inventario");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
+        menu_inventario.add(jMenuItem14);
+        menu_inventario.add(jSeparator12);
+
+        jMenuItem15.setText("Modificar Precio de Productos");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
+        menu_inventario.add(jMenuItem15);
+
         jMenuBar1.add(menu_inventario);
 
         menu_ventas.setText("VENTAS");
@@ -447,6 +479,36 @@ public class Menuu_IU extends javax.swing.JFrame {
         frame.show();
     }//GEN-LAST:event_btnComprasActionPerformed
 
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        // TODO add your handling code here:
+        EntradaProductos_IU frame = new EntradaProductos_IU();
+        escritorioo.add(frame);
+        Dimension a = escritorioo.getSize();
+        Dimension b = frame.getSize();
+        frame.setLocation((a.width - b.width) / 2, (a.height - b.height) / 2);
+        frame.show();
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        // TODO add your handling code here:
+        Inventario_IU frame = new Inventario_IU();
+        escritorioo.add(frame);
+        Dimension a = escritorioo.getSize();
+        Dimension b = frame.getSize();
+        frame.setLocation((a.width - b.width) / 2, (a.height - b.height) / 2);
+        frame.show();
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
+
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+        // TODO add your handling code here:
+        ModificarPreciosProductos_IU frame = new ModificarPreciosProductos_IU();
+        escritorioo.add(frame);
+        Dimension a = escritorioo.getSize();
+        Dimension b = frame.getSize();
+        frame.setLocation((a.width - b.width) / 2, (a.height - b.height) / 2);
+        frame.show();
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -496,6 +558,9 @@ public class Menuu_IU extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -506,6 +571,8 @@ public class Menuu_IU extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator10;
+    private javax.swing.JPopupMenu.Separator jSeparator11;
+    private javax.swing.JPopupMenu.Separator jSeparator12;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
