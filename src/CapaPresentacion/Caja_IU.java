@@ -1,0 +1,419 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package CapaPresentacion;
+
+import CapaDatos.Asistencia;
+import CapaDatos.Caja;
+import CapaDatos.Turno;
+import CapaNegocio.AsistenciaBD;
+import CapaNegocio.CajaBD;
+import CapaNegocio.DetalleCajaBD;
+import CapaNegocio.TurnoBD;
+import java.util.Calendar;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ *
+ * @author Est.Invitado_04
+ */
+public class Caja_IU extends javax.swing.JInternalFrame {
+    
+    double totalIngresos = 0.0;
+    double totalEgresos = 0.0;
+    double saldoHoy = 0.0;
+    double saldoAnterior = 0.0;
+    String tienda;
+    String dni_usuario;
+    String am_pm;
+    int nuevaHora;
+    String hh_mm_ss;
+    double totalCajaHoy;
+
+    /**
+     * Creates new form Caja_IU
+     */
+    public Caja_IU() {
+        initComponents();
+        sacarFecha();
+        sacarHora();
+        sacarTotalEgresos();
+        sacarTotalIngresos();
+        mostrarSaldoHoy();
+        saldoAnterior();
+    }
+    
+    private void sacarHora() {
+        Calendar calendario = Calendar.getInstance();
+        int hora = calendario.get(Calendar.HOUR_OF_DAY);
+        int minutos = calendario.get(Calendar.MINUTE);
+        int segundos = calendario.get(Calendar.SECOND);
+        hh_mm_ss = hora + ":" + minutos + ":" + segundos;
+        txtHora.setText(hh_mm_ss);
+    }
+    
+    private void sacarFecha() {
+        
+        Calendar calendario = Calendar.getInstance();
+        
+        int dia = calendario.get(Calendar.DAY_OF_MONTH);
+        int mes = calendario.get(Calendar.MONTH) + 1;
+        int anio = calendario.get(Calendar.YEAR);
+        String fecha = anio + "-" + mes + "-" + dia;
+        txtFecha.setText(fecha);
+    }
+    
+    private void exito(String mensaje) {
+        JOptionPane.showConfirmDialog(this, mensaje, "MENSAJE", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    private void error(String mensaje) {
+        JOptionPane.showConfirmDialog(this, mensaje, "ERROR", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+    }
+    
+    private void advertencia(String mensaje) {
+        JOptionPane.showConfirmDialog(this, mensaje, "ADVERTENCIA", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE);
+    }
+    
+    private void sacarTotalIngresos() {
+        DefaultTableModel tabla_temporal;
+        DetalleCajaBD oDetalleCajaBD = new DetalleCajaBD();
+        tienda = Login_IU.tienda;
+        dni_usuario = Login_IU.dni_publico;
+        tabla_temporal = oDetalleCajaBD.mostrarTotalDineroXTipo("INGRESO", "ABIERTO", tienda, dni_usuario, "CAJA NRO 1");
+        if (tabla_temporal.getValueAt(0, 0) != null) {
+            txtTotalIngresos.setText("S/." + tabla_temporal.getValueAt(0, 0));
+            totalIngresos = Double.parseDouble(tabla_temporal.getValueAt(0, 0).toString());
+        } else {
+            totalIngresos = 0.00;
+            txtTotalIngresos.setText("S/." + totalIngresos);
+        }
+    }
+    
+    private void sacarTotalEgresos() {
+        DefaultTableModel tabla_temporal;
+        DetalleCajaBD oDetalleCajaBD = new DetalleCajaBD();
+        tienda = Login_IU.tienda;
+        dni_usuario = Login_IU.dni_publico;
+        tabla_temporal = oDetalleCajaBD.mostrarTotalDineroXTipo("EGRESO", "ABIERTO", tienda, dni_usuario, "CAJA NRO 1");
+        if (tabla_temporal.getValueAt(0, 0) != null) {
+            txtTotalEgresos.setText("S/." + tabla_temporal.getValueAt(0, 0));
+            totalEgresos = Double.parseDouble(tabla_temporal.getValueAt(0, 0).toString());
+        } else {
+            totalEgresos = 0.00;
+            txtTotalEgresos.setText("S/." + totalEgresos);
+        }
+    }
+    
+    private void mostrarSaldoHoy() {
+        saldoHoy = totalIngresos - totalEgresos;
+        txtSaldoHoy.setText("S/." + saldoHoy);
+    }
+    
+    private void saldoAnterior() {
+        CajaBD oCajaBD = new CajaBD();
+        List<Caja> lista_saldo_anterior = oCajaBD.obtenerSaldoAnterior();
+        if (lista_saldo_anterior.size() > 0) {
+            lblSaldoAnterior.setText("SALDO ANTERIOR S/." + lista_saldo_anterior.get(0).getSaldo_final());
+            saldoAnterior = lista_saldo_anterior.get(0).getSaldo_final();
+            
+            totalCajaHoy = saldoAnterior + saldoHoy;
+            lblTotalCaja.setText("S/." + totalCajaHoy);
+        } else {
+            saldoAnterior = 0.00;
+            lblSaldoAnterior.setText("SALDO ANTERIOR S/." + saldoAnterior);
+            totalCajaHoy = saldoAnterior + saldoHoy;
+            lblTotalCaja.setText("S/." + totalCajaHoy);
+        }
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        lblSaldoAnterior = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtFecha = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtHora = new javax.swing.JTextField();
+        btnActualizar = new javax.swing.JButton();
+        btnCerrarCaja = new javax.swing.JButton();
+        chkCerrarAntes = new javax.swing.JCheckBox();
+        lblTotalCaja = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtSaldoHoy = new javax.swing.JLabel();
+        txtTotalEgresos = new javax.swing.JLabel();
+        txtTotalIngresos = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setTitle("CAJA");
+        setDoubleBuffered(true);
+
+        lblSaldoAnterior.setFont(new java.awt.Font("Calibri Light", 0, 48)); // NOI18N
+        lblSaldoAnterior.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSaldoAnterior.setText("SALDO ANTERIOR S/. 0,00");
+        lblSaldoAnterior.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 255, 51), 2));
+
+        jLabel2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel2.setText("TOTAL DE INGRESOS");
+
+        jLabel3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel3.setText("TOTAL DE EGRESOS");
+
+        jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel4.setText("SALDO DE HOY");
+
+        jLabel5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel5.setText("FECHA");
+
+        txtFecha.setEnabled(false);
+
+        jLabel6.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel6.setText("HORA");
+
+        txtHora.setEnabled(false);
+
+        btnActualizar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        btnActualizar.setText("ACTUALIZAR");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
+        btnCerrarCaja.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        btnCerrarCaja.setText("CERRAR CAJA");
+        btnCerrarCaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarCajaActionPerformed(evt);
+            }
+        });
+
+        chkCerrarAntes.setBackground(new java.awt.Color(255, 255, 255));
+        chkCerrarAntes.setText("CERRAR ANTES DE LA HORA");
+
+        lblTotalCaja.setFont(new java.awt.Font("Calibri Light", 0, 48)); // NOI18N
+        lblTotalCaja.setForeground(new java.awt.Color(0, 0, 204));
+        lblTotalCaja.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTotalCaja.setText("S/.0,00");
+        lblTotalCaja.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel1.setFont(new java.awt.Font("Calibri", 0, 20)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 51, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("SALDO DE HOY + SALDO ANTERIOR");
+        jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(0));
+
+        txtSaldoHoy.setFont(new java.awt.Font("Calibri", 0, 40)); // NOI18N
+        txtSaldoHoy.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtSaldoHoy.setText("S/.0,00");
+        txtSaldoHoy.setBorder(javax.swing.BorderFactory.createEtchedBorder(0));
+
+        txtTotalEgresos.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        txtTotalEgresos.setForeground(new java.awt.Color(204, 0, 0));
+        txtTotalEgresos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        txtTotalEgresos.setText("0,00");
+        txtTotalEgresos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtTotalEgresos.setMaximumSize(new java.awt.Dimension(35, 29));
+        txtTotalEgresos.setMinimumSize(new java.awt.Dimension(35, 29));
+        txtTotalEgresos.setPreferredSize(new java.awt.Dimension(35, 29));
+
+        txtTotalIngresos.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        txtTotalIngresos.setForeground(new java.awt.Color(0, 51, 204));
+        txtTotalIngresos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        txtTotalIngresos.setText("0,00");
+        txtTotalIngresos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtTotalIngresos.setMaximumSize(new java.awt.Dimension(35, 29));
+        txtTotalIngresos.setMinimumSize(new java.awt.Dimension(35, 29));
+        txtTotalIngresos.setPreferredSize(new java.awt.Dimension(35, 29));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(lblSaldoAnterior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addGap(148, 148, 148))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtSaldoHoy, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtTotalEgresos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtTotalIngresos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(chkCerrarAntes, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblTotalCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                                    .addComponent(txtHora))
+                                .addGap(26, 26, 26)
+                                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnCerrarCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblSaldoAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtTotalIngresos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtTotalEgresos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtSaldoHoy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnCerrarCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6)))
+                            .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblTotalCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(chkCerrarAntes)
+                .addContainerGap())
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+        sacarTotalIngresos();
+        sacarTotalEgresos();
+        mostrarSaldoHoy();
+    }//GEN-LAST:event_btnActualizarActionPerformed
+    public void cerrarCaja() {
+        Caja oCaja = new Caja();
+        CajaBD oCajaBD = new CajaBD();
+        dni_usuario = Login_IU.dni_publico;
+        oCaja.setCaFecha(txtFecha.getText());
+        oCaja.setHora(txtHora.getText());
+        oCaja.setTotal_ingreso(totalIngresos);
+        oCaja.setTotal_egreso(totalEgresos);
+        oCaja.setSaldo_final(totalCajaHoy);
+        oCaja.setNroCaja("CAJA NRO 1");
+        oCaja.setCaEstado("CERRADO");
+        oCaja.setuDni(dni_usuario);
+        oCaja.setTienda(tienda);
+        boolean rpta = oCajaBD.registrarCaja(oCaja);
+        if (rpta) {
+            exito("Se cerro la caja con exito");
+        } else {
+            error("Tienes problemas para cerra la caja");
+        }
+    }
+    
+    private void cerraDetalleCaja() {
+        DetalleCajaBD oDetalleCajaBD = new DetalleCajaBD();
+        oDetalleCajaBD.actualizarEstado("CERRADO", Login_IU.dni_publico, tienda, "CAJA NRO 1");
+        
+    }
+    
+    private void controlAsistenciaSalida() {
+        Asistencia oAsistencia = new Asistencia();
+        AsistenciaBD oAsistenciaBD = new AsistenciaBD();
+        oAsistencia.setaHoraS(txtHora.getText());
+        oAsistencia.setaEstado("CERRADO");
+        oAsistencia.setIdasistencia(Login_IU.idasistencia);
+        oAsistenciaBD.actualizarAsistencia(oAsistencia);
+    }
+    private void btnCerrarCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarCajaActionPerformed
+        // TODO add your handling code here:
+        try {
+            int aviso = JOptionPane.showConfirmDialog(rootPane, "Estas seguro de cerrar la caja ?.");
+            if (aviso == 0) {
+                if (chkCerrarAntes.isSelected()) {
+                    cerrarCaja();
+                    cerraDetalleCaja();
+                    controlAsistenciaSalida();
+                    System.exit(0);
+                } else {
+                    TurnoBD oTurnoBD = new TurnoBD();
+                    List<Turno> listaTurno = oTurnoBD.verificarHorario(txtHora.getText(), Login_IU.dni_publico);
+                    
+                    if (listaTurno.size() == 0) {
+                        cerrarCaja();
+                        cerraDetalleCaja();
+                        controlAsistenciaSalida();
+                        System.exit(0);
+                    } else {
+                        advertencia("Todavia no puedes cerra caja, no se cumple tu horario de salida");
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnCerrarCajaActionPerformed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnCerrarCaja;
+    private javax.swing.JCheckBox chkCerrarAntes;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel lblSaldoAnterior;
+    private javax.swing.JLabel lblTotalCaja;
+    private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtHora;
+    private javax.swing.JLabel txtSaldoHoy;
+    private javax.swing.JLabel txtTotalEgresos;
+    private javax.swing.JLabel txtTotalIngresos;
+    // End of variables declaration//GEN-END:variables
+}

@@ -82,4 +82,27 @@ public class AsistenciaBD {
         }
         return idasistencia;
     }
+    
+    public boolean actualizarAsistencia(Asistencia a) {
+        boolean rpta = false;
+        sql = "UPDATE asistencia SET aHoraS=?,aEstado=? WHERE idasistencia=?";
+        try {
+            cn = mysql.conectar();
+            PreparedStatement pst = cn.prepareStatement(sql);
+
+            pst.setString(1, a.getaHoraS());
+            pst.setString(2, a.getaEstado());
+            pst.setInt(3, a.getIdasistencia());
+
+            rpta = pst.executeUpdate() == 1 ? true : false;
+
+            pst.close();
+            cn.close();
+
+            return rpta;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Problemas al actualizar....", JOptionPane.ERROR_MESSAGE);
+            return rpta;
+        }
+    }
 }

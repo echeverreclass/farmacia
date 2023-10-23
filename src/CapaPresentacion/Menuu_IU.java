@@ -59,6 +59,8 @@ public class Menuu_IU extends javax.swing.JFrame {
         jSeparator9 = new javax.swing.JPopupMenu.Separator();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
+        jSeparator13 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem16 = new javax.swing.JMenuItem();
         menu_compras = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
         jSeparator10 = new javax.swing.JPopupMenu.Separator();
@@ -71,6 +73,10 @@ public class Menuu_IU extends javax.swing.JFrame {
         jMenuItem15 = new javax.swing.JMenuItem();
         menu_ventas = new javax.swing.JMenu();
         menu_caja = new javax.swing.JMenu();
+        jMenuItem17 = new javax.swing.JMenuItem();
+        jMenuItem18 = new javax.swing.JMenuItem();
+        jSeparator14 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem19 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(6);
@@ -246,6 +252,15 @@ public class Menuu_IU extends javax.swing.JFrame {
             }
         });
         menu_mantenimiento.add(jMenuItem10);
+        menu_mantenimiento.add(jSeparator13);
+
+        jMenuItem16.setText("Correlativo");
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem16ActionPerformed(evt);
+            }
+        });
+        menu_mantenimiento.add(jMenuItem16);
 
         jMenuBar1.add(menu_mantenimiento);
 
@@ -312,6 +327,32 @@ public class Menuu_IU extends javax.swing.JFrame {
         menu_caja.setText("CAJA");
         menu_caja.setEnabled(false);
         menu_caja.setFont(new java.awt.Font("Calibri", 1, 15)); // NOI18N
+
+        jMenuItem17.setText("Egreso");
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17ActionPerformed(evt);
+            }
+        });
+        menu_caja.add(jMenuItem17);
+
+        jMenuItem18.setText("Ingreso");
+        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem18ActionPerformed(evt);
+            }
+        });
+        menu_caja.add(jMenuItem18);
+        menu_caja.add(jSeparator14);
+
+        jMenuItem19.setText("Ver Caja");
+        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem19ActionPerformed(evt);
+            }
+        });
+        menu_caja.add(jMenuItem19);
+
         jMenuBar1.add(menu_caja);
 
         setJMenuBar(jMenuBar1);
@@ -509,6 +550,46 @@ public class Menuu_IU extends javax.swing.JFrame {
         frame.show();
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
+    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+        // TODO add your handling code here:
+        Correlativo_IU frame = new Correlativo_IU();
+        escritorioo.add(frame);
+        Dimension a = escritorioo.getSize();
+        Dimension b = frame.getSize();
+        frame.setLocation((a.width - b.width) / 2, (a.height - b.height) / 2);
+        frame.show();
+    }//GEN-LAST:event_jMenuItem16ActionPerformed
+
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+        // TODO add your handling code here:
+        Egresos_IU frame = new Egresos_IU();
+        escritorioo.add(frame);
+        Dimension a = escritorioo.getSize();
+        Dimension b = frame.getSize();
+        frame.setLocation((a.width - b.width) / 2, (a.height - b.height) / 2);
+        frame.show();
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
+
+    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
+        // TODO add your handling code here:
+        Ingresos_IU frame = new Ingresos_IU();
+        escritorioo.add(frame);
+        Dimension a = escritorioo.getSize();
+        Dimension b = frame.getSize();
+        frame.setLocation((a.width - b.width) / 2, (a.height - b.height) / 2);
+        frame.show();
+    }//GEN-LAST:event_jMenuItem18ActionPerformed
+
+    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
+        // TODO add your handling code here:
+        Caja_IU frame = new Caja_IU();
+        escritorioo.add(frame);
+        Dimension a = escritorioo.getSize();
+        Dimension b = frame.getSize();
+        frame.setLocation((a.width - b.width) / 2, (a.height - b.height) / 2);
+        frame.show();
+    }//GEN-LAST:event_jMenuItem19ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -561,6 +642,10 @@ public class Menuu_IU extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
+    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -573,6 +658,8 @@ public class Menuu_IU extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator10;
     private javax.swing.JPopupMenu.Separator jSeparator11;
     private javax.swing.JPopupMenu.Separator jSeparator12;
+    private javax.swing.JPopupMenu.Separator jSeparator13;
+    private javax.swing.JPopupMenu.Separator jSeparator14;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
