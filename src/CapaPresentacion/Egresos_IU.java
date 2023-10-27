@@ -7,6 +7,7 @@ package CapaPresentacion;
 
 import CapaDatos.Correlativo;
 import CapaDatos.DetalleCaja;
+import CapaNegocio.ColorearColumnasJTable;
 import CapaNegocio.CorrelativoBD;
 import CapaNegocio.DetalleCajaBD;
 import java.awt.Color;
@@ -39,6 +40,11 @@ public class Egresos_IU extends javax.swing.JInternalFrame {
         sacarNro();
         reportar();
         calculaTotal();
+         ColorearColumnasJTable co15=new ColorearColumnasJTable(5, Color.YELLOW);
+        ColorearColumnasJTable co17=new ColorearColumnasJTable(6, Color.PINK);
+        
+        tabla_reporte_egreso.getColumnModel().getColumn(5).setCellRenderer(co15);
+        tabla_reporte_egreso.getColumnModel().getColumn(6).setCellRenderer(co17);
     }
 
     private void limpiar() {

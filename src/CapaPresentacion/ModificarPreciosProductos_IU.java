@@ -6,6 +6,7 @@
 package CapaPresentacion;
 
 import CapaDatos.EntradaProducto;
+import CapaNegocio.ColorearColumnasJTable;
 import CapaNegocio.EntradaProductoBD;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -29,6 +30,9 @@ public class ModificarPreciosProductos_IU extends javax.swing.JInternalFrame {
      */
     public ModificarPreciosProductos_IU() {
         initComponents();
+         ColorearColumnasJTable co15=new ColorearColumnasJTable(4, Color.YELLOW);
+        
+        tabla_reporte_producto.getColumnModel().getColumn(4).setCellRenderer(co15);
     }
 
     private void limpiar() {

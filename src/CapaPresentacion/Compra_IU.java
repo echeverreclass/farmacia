@@ -8,6 +8,7 @@ package CapaPresentacion;
 import CapaDatos.Compra;
 import CapaDatos.DetalleCompra;
 import CapaDatos.Medida;
+import CapaNegocio.ColorearColumnasJTable;
 import CapaNegocio.CompraBD;
 import CapaNegocio.DetalleCompraBD;
 import CapaNegocio.MedidaBD;
@@ -39,6 +40,12 @@ public class Compra_IU extends javax.swing.JInternalFrame {
     public Compra_IU() {
         initComponents();
         cargarMedida();
+        
+         ColorearColumnasJTable co15=new ColorearColumnasJTable(6, Color.YELLOW);
+        ColorearColumnasJTable co17=new ColorearColumnasJTable(5, Color.PINK);
+        
+        tabla_reporte_detalle_productos.getColumnModel().getColumn(6).setCellRenderer(co15);
+        tabla_reporte_detalle_productos.getColumnModel().getColumn(5).setCellRenderer(co17);
     }
 
     private void limpiar_tabla_formulario() {

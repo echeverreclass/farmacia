@@ -7,6 +7,7 @@ package CapaPresentacion;
 
 import CapaDatos.TipoUsuario;
 import CapaDatos.Usuario;
+import CapaNegocio.AjustarColumnasJTable;
 import CapaNegocio.TipoUsuarioBD;
 import CapaNegocio.UsuarioBD;
 import java.awt.Color;

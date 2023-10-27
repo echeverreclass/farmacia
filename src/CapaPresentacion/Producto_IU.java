@@ -9,7 +9,9 @@ import CapaDatos.Categoria;
 import CapaDatos.Marca;
 import CapaDatos.Medida;
 import CapaDatos.Producto;
+import CapaNegocio.AjustarColumnasJTable;
 import CapaNegocio.CategoriaBD;
+import CapaNegocio.ColorearColumnasJTable;
 import CapaNegocio.MarcaBD;
 import CapaNegocio.MedidaBD;
 import CapaNegocio.ProductoBD;
@@ -42,6 +44,12 @@ public class Producto_IU extends javax.swing.JInternalFrame {
         cargarCategoria();
         cargarMarca();
         cargarMedida();
+        ColorearColumnasJTable co15=new ColorearColumnasJTable(5, Color.YELLOW);
+        ColorearColumnasJTable co17=new ColorearColumnasJTable(7, Color.PINK);
+        
+        tabla_reporte_producto.getColumnModel().getColumn(5).setCellRenderer(co15);
+        tabla_reporte_producto.getColumnModel().getColumn(7).setCellRenderer(co17);
+        
     }
 
     private void habilitar() {
@@ -164,6 +172,7 @@ public class Producto_IU extends javax.swing.JInternalFrame {
             }
             tabla_reporte_producto.setModel(tabla_temporal_producto);
 
+            AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reporte_producto);
             setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         } catch (Exception ex) {

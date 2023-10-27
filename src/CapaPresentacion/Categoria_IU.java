@@ -6,6 +6,7 @@
 package CapaPresentacion;
 
 import CapaDatos.Categoria;
+import CapaNegocio.AjustarColumnasJTable;
 import CapaNegocio.CategoriaBD;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -67,7 +68,7 @@ public class Categoria_IU extends javax.swing.JInternalFrame {
             }
             tabla_reportar_categoria.setModel(tabla_temporal);
             setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-            
+            AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reportar_categoria);
             int cantLista = tabla_temporal.getRowCount();
             txtCantidad.setText("" + cantLista);
 

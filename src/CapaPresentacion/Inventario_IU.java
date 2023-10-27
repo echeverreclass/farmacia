@@ -5,7 +5,9 @@
  */
 package CapaPresentacion;
 
+import CapaNegocio.ColorearColumnasJTable;
 import CapaNegocio.EntradaProductoBD;
+import java.awt.Color;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import javax.swing.table.DefaultTableModel;
@@ -22,6 +24,11 @@ public class Inventario_IU extends javax.swing.JInternalFrame {
     public Inventario_IU() {
         initComponents();
         reportar();
+         ColorearColumnasJTable co15=new ColorearColumnasJTable(9, Color.YELLOW);
+        ColorearColumnasJTable co17=new ColorearColumnasJTable(11, Color.PINK);
+        
+        tabla_reporte_inventario.getColumnModel().getColumn(9).setCellRenderer(co15);
+        tabla_reporte_inventario.getColumnModel().getColumn(11).setCellRenderer(co17);
     }
 
     private void limpiar_tabla_formulario() {

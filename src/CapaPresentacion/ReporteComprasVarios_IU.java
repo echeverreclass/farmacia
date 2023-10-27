@@ -5,9 +5,11 @@
  */
 package CapaPresentacion;
 
+import CapaNegocio.ColorearColumnasJTable;
 import CapaNegocio.CompraBD;
 import CapaNegocio.DetalleCompraBD;
 import CapaNegocio.ProveedorBD;
+import java.awt.Color;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
@@ -28,6 +30,11 @@ public class ReporteComprasVarios_IU extends javax.swing.JInternalFrame {
     public ReporteComprasVarios_IU() {
         initComponents();
         cargarProveedores();
+         ColorearColumnasJTable co15=new ColorearColumnasJTable(3, Color.orange);
+        ColorearColumnasJTable co17=new ColorearColumnasJTable(8, Color.PINK);
+        
+        tabla_reporte_compras.getColumnModel().getColumn(3).setCellRenderer(co15);
+        tabla_reporte_compras.getColumnModel().getColumn(8).setCellRenderer(co17);
     }
 
     private void limpiar_tabla_formulario() {

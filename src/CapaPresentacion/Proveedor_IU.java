@@ -6,6 +6,7 @@
 package CapaPresentacion;
 
 import CapaDatos.Proveedor;
+import CapaNegocio.ColorearColumnasJTable;
 import CapaNegocio.ProveedorBD;
 import static CapaPresentacion.Menuu_IU.escritorioo;
 import java.awt.Color;
@@ -26,6 +27,11 @@ public class Proveedor_IU extends javax.swing.JInternalFrame {
     public Proveedor_IU() {
         initComponents();
         reportar();
+         ColorearColumnasJTable co15=new ColorearColumnasJTable(0, Color.YELLOW);
+        ColorearColumnasJTable co17=new ColorearColumnasJTable(1, Color.PINK);
+        
+        tabla_reporte_proveedor.getColumnModel().getColumn(0).setCellRenderer(co15);
+        tabla_reporte_proveedor.getColumnModel().getColumn(1).setCellRenderer(co17);
     }
 
     private void exito(String mensaje) {

@@ -6,6 +6,7 @@
 package CapaPresentacion;
 
 import CapaDatos.DetalleCuentasBancarias;
+import CapaNegocio.ColorearColumnasJTable;
 import CapaNegocio.DetalleCuentaBancariasBD;
 import CapaNegocio.ProveedorBD;
 import java.awt.Color;
