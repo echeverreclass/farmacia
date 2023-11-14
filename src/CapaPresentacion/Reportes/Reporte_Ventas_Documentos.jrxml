@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="66693dad-bedc-42e0-a5dd-b806e83580da">
+	<property name="ireport.zoom" value="2.357947691000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fechaInicio" class="java.lang.String"/>
+	<parameter name="fechaFinal" class="java.lang.String"/>
+	<parameter name="documento" class="java.lang.String"/>
+	<parameter name="tienda" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT idventa,DATE_FORMAT(vFecha,'%Y-%m-%d') AS fecha,DATE_FORMAT(vHora,'%H:%i:%s') AS 
+hora,vDocumento,vCorrelativo,vTipoPago,vFormaPago,vEstado,vMoneda,vSubTotal,vIgv,vTotalPagar,vPagoCon,vVuelto,v.cliRuc_Dni,c.cliDatos,uDni,tienda 
+FROM venta AS v 
+INNER JOIN cliente AS c ON v.cliRuc_Dni=c.cliRuc_Dni 
+WHERE (vFecha BETWEEN $P{fechaInicio} AND $P{fechaFinal}) AND vDocumento=$P{documento}  AND vEstado="ATENDIDO" AND tienda=$P{tienda}]]>
+	</queryString>
+	<field name="idventa" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha" class="java.lang.String"/>
+	<field name="hora" class="java.lang.String"/>
+	<field name="vDocumento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vCorrelativo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vTipoPago" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vFormaPago" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vEstado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vMoneda" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vSubTotal" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vIgv" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vTotalPagar" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vPagoCon" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vVuelto" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cliRuc_Dni" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cliDatos" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="uDni" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tienda" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="59" width="422" height="20" uuid="b34f96c4-2cd6-4330-a8ff-e15a08df119e"/>
+				<textElement>
+					<font fontName="Calibri Light" size="12"/>
+				</textElement>
+				<text><![CDATA[El reporte de las ventas son por documentos:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="77" y="0" width="428" height="38" uuid="2296a4cb-4c59-4e34-ae1d-e348025573f3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Impact" size="28" isBold="false"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE VENTAS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="186" y="37" width="216" height="1" uuid="f74384e1-4135-4ed3-8faa-ee19f510c3d6"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="57" height="20" uuid="d3329166-c300-450e-a3be-c6e9d247d922"/>
+				<textElement>
+					<font fontName="Candara" size="12"/>
+				</textElement>
+				<text><![CDATA[DESDE :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="57" y="0" width="100" height="20" uuid="c86e7dc0-c5df-407b-88ac-49530d58a7ad"/>
+				<textElement>
+					<font fontName="Candara Light" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaInicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="57" y="20" width="100" height="20" uuid="88c27174-c934-4d8a-a944-93151dee00be"/>
+				<textElement>
+					<font fontName="Candara Light" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaFinal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="57" height="20" uuid="1382fc3a-0401-48e6-9a9e-425a4ae8c51e"/>
+				<textElement>
+					<font fontName="Candara" size="12"/>
+				</textElement>
+				<text><![CDATA[HASTA :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="204" y="0" width="83" height="20" uuid="44eaf5e6-8e44-4599-a07b-01190bf1fd3d"/>
+				<textElement>
+					<font fontName="Candara" size="12"/>
+				</textElement>
+				<text><![CDATA[DOCUMENTO :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="287" y="20" width="218" height="20" uuid="a9359d47-577c-4384-9b2a-2fa0a29b3892"/>
+				<textElement>
+					<font fontName="Candara Light" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tienda}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="204" y="20" width="83" height="20" uuid="67456b20-3ed3-40f5-a576-f899357c72cd"/>
+				<textElement>
+					<font fontName="Candara" size="12"/>
+				</textElement>
+				<text><![CDATA[TIENDA :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="287" y="0" width="218" height="20" uuid="ea6d30c5-151b-4c76-ba43-6f1fa8afd881"/>
+				<textElement>
+					<font fontName="Candara Light" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{documento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="cc0f5e42-b4b0-457e-9f51-73a6f709fabb"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="113" y="1" width="197" height="20" uuid="4235171a-339c-4e01-b7f7-9a47352bcd64"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="1" width="60" height="20" uuid="8c830c1f-de58-4630-977d-030551f35fb1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOCUMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="1" width="60" height="20" uuid="3256d7d9-93b6-42a8-a9fc-9ef64e50e183"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CORRELATIVO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="495" y="1" width="60" height="20" uuid="37f5dff9-1d94-4fcb-a2b1-c39c401fd168"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="1" width="65" height="20" uuid="b2f98200-7693-4be4-9463-7205681431e6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TIPOPAGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="57" height="20" uuid="b23c54e8-1ecb-4eea-9fc1-71ecff627486"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="57" y="1" width="56" height="20" uuid="5c49ea6a-27e6-4946-a279-ece01e344ad3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="20" width="555" height="1" uuid="37364945-e6f1-4799-84a3-b5c6c095f91d"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="113" y="-1" width="197" height="20" uuid="0ad1b09c-e9ae-4cbd-ac00-e9a64dff7f03"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliDatos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="-1" width="60" height="20" uuid="5e4d2237-f9f9-4487-8609-fee401098786"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vCorrelativo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="494" y="-1" width="60" height="20" uuid="af8483c0-3df6-4847-91ac-33c1ffb1cb51"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vTotalPagar}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="19" width="555" height="1" uuid="cd5d4072-ced4-4f94-84dc-3271da3d491f"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="310" y="-1" width="60" height="20" uuid="914c10e7-a5b1-4525-88b7-713784e652af"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vDocumento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="-1" width="64" height="20" uuid="953e15a1-fd70-49c9-9794-c874af69780e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vTipoPago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="57" y="-1" width="56" height="20" uuid="f7c6fa63-b0bf-4ad7-b358-a15c57984c00"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="-1" width="57" height="20" uuid="5d18793b-4395-49e4-8078-a2190c7c4410"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri Light" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="57" height="20" uuid="25446e35-bb6b-4534-accc-ee972d5686a6"/>
+				<textElement>
+					<font fontName="Candara" size="12"/>
+				</textElement>
+				<text><![CDATA[IMPRESO :]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="57" y="0" width="100" height="20" uuid="86347af8-4190-427d-8961-d3eb43d7a16b"/>
+				<textElement>
+					<font fontName="Candara Light" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="52c4d99c-f433-499d-83fa-17c0c7e185cf"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

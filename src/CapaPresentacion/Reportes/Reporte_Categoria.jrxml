@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="89271300-7e69-417a-a15d-c8ec1dbc0380">
+	<property name="ireport.zoom" value="0.7513148009015781"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM categoria]]>
+	</queryString>
+	<field name="idcategoria" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="catNombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="idcategoria_1" class="java.lang.Integer" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{idcategoria}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="106" y="0" width="361" height="38" uuid="1ab6b647-5c9f-41ed-b036-e1dc8f7a5131"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="24"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE CATEGORIAS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="106" y="38" width="361" height="1" uuid="2a8befd8-0a67-4899-b5af-5d1c78da55e3"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="34" y="7" width="507" height="28" uuid="272d8824-fd47-4321-b2cb-88a805565830"/>
+				<textElement>
+					<font fontName="Dialog" size="16"/>
+				</textElement>
+				<text><![CDATA[Se detalla todas las categorias de la empresa]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement x="147" y="12" width="394" height="20" uuid="13f32c2b-4129-42eb-8ab7-cd5540713cdc"/>
+				<textElement>
+					<font fontName="Bahnschrift" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Categoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="12" width="100" height="20" uuid="e5740e3a-cd31-4d12-9b04-52a93b1a9f8d"/>
+				<textElement>
+					<font fontName="Bahnschrift" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="11" width="555" height="1" uuid="353286ce-b536-469e-9064-ed0d2dc44df3"/>
+			</line>
+			<line>
+				<reportElement x="0" y="31" width="555" height="1" uuid="1c26ebd1-67f5-4adb-a8fc-878bdac70073"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="147" y="0" width="394" height="20" uuid="2cb16c55-41b1-41f2-946b-10c46c17a922"/>
+				<textFieldExpression><![CDATA[$F{catNombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="34" y="0" width="100" height="20" uuid="9a25cba5-2355-4fc9-a755-4e0b8e6ced9c"/>
+				<textFieldExpression><![CDATA[$F{idcategoria}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="19" width="555" height="1" uuid="ef427482-941f-4d68-8974-2e295549dcb8"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
