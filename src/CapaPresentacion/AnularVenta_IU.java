@@ -560,7 +560,7 @@ public class AnularVenta_IU extends javax.swing.JInternalFrame {
             InputStream reportStream;
 
             String ruta = "/CapaPresentacion/Reportes/Imprimir_Comprobante.jasper";
-            String logo = "/CapaPresentacion/Imagenes/logo.png";
+            String logo = "/src/Imagenes/logo.jpg";
 
             Map parametro = new HashMap();
             parametro.clear();

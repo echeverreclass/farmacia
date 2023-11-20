@@ -810,7 +810,7 @@ public class Venta_IU extends javax.swing.JInternalFrame {
             InputStream reportStream;
 
             String ruta = "/CapaPresentacion/Reportes/Imprimir_Comprobante.jasper";
-            String logo = "/CapaPresentacion/Imagenes/logo.png";
+            String logo = "/Imagenes/logo.jpg";
 
             Map parametro = new HashMap();
             parametro.clear();
@@ -942,6 +942,14 @@ public class Venta_IU extends javax.swing.JInternalFrame {
 
     private void btnQuitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarActionPerformed
         // TODO add your handling code here:
+        int filaSeleccionada = tabla_ventas.getSelectedRow();
+        try {
+            DefaultTableModel tabla_temporal_entradas = (DefaultTableModel) tabla_ventas.getModel();
+            tabla_temporal_entradas.removeRow(filaSeleccionada);
+            tabla_ventas.setModel(tabla_temporal_entradas);
+        } catch (Exception e) {
+            error("Error al quitar");
+        }
     }//GEN-LAST:event_btnQuitarActionPerformed
 
     private void txtDniRucFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDniRucFocusGained

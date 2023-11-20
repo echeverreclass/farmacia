@@ -223,28 +223,25 @@ public class Pedidos_IU extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(68, 68, 68)
+                        .addComponent(jLabel4)
+                        .addGap(77, 77, 77)
+                        .addComponent(jLabel5))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(68, 68, 68)
-                                .addComponent(jLabel4)
-                                .addGap(77, 77, 77)
-                                .addComponent(jLabel5))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblPresentacion)
-                                    .addComponent(lblEquivalencia))
-                                .addGap(24, 24, 24)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtStockEquivalencia, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtStockPresetacion, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtPrecioVentaPresentacion, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                                    .addComponent(txtPrecioVentaEquivalencia))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(lblPresentacion)
+                            .addComponent(lblEquivalencia))
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtStockEquivalencia, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtStockPresetacion, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtPrecioVentaPresentacion, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                            .addComponent(txtPrecioVentaEquivalencia))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -308,6 +305,7 @@ public class Pedidos_IU extends javax.swing.JInternalFrame {
             }
         });
 
+        rbPresentacion.setBackground(new java.awt.Color(255, 255, 255));
         bgPresentacion.add(rbPresentacion);
         rbPresentacion.setText("...");
         rbPresentacion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -316,6 +314,7 @@ public class Pedidos_IU extends javax.swing.JInternalFrame {
             }
         });
 
+        rbEquivalencia.setBackground(new java.awt.Color(255, 255, 255));
         bgPresentacion.add(rbEquivalencia);
         rbEquivalencia.setText("...");
         rbEquivalencia.addMouseListener(new java.awt.event.MouseAdapter() {

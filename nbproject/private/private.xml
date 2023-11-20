@@ -4,7 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Est.Invitado_04/Videos/farmacia-main/farmacia-main/src/CapaPresentacion/AnularVenta_IU.java</file>
-            <file>file:/C:/Users/Est.Invitado_04/Videos/farmacia-main/farmacia-main/src/CapaPresentacion/Reportes/Reportes_Ventas_Anuladas.jrxml</file>
+            <file>file:/C:/Users/Est.Invitado_04/Videos/farmacia-main/farmacia-main/src/CapaPresentacion/Venta_IU.java</file>
+            <file>file:/C:/Users/Est.Invitado_04/Videos/farmacia-main/farmacia-main/src/CapaPresentacion/Reportes/Imprimir_Comprobante.jrxml</file>
+            <file>file:/C:/Users/Est.Invitado_04/Videos/farmacia-main/farmacia-main/src/CapaPresentacion/Pedidos_IU.java</file>
         </group>
     </open-files>
 </project-private>

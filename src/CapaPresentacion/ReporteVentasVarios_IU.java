@@ -113,6 +113,11 @@ public class ReporteVentasVarios_IU extends javax.swing.JInternalFrame {
         tabla_reporte_detalle_ventas = new javax.swing.JTable();
         txtCerrar = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+
         tabla_reporte_ventas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -332,6 +337,8 @@ public class ReporteVentasVarios_IU extends javax.swing.JInternalFrame {
 
         jTabbedPane5.addTab("VENTAS AL CONTADO", jPanel3);
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel8.setText("CLIENTE");
 
         txtCliente.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -420,7 +427,7 @@ public class ReporteVentasVarios_IU extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jTabbedPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
