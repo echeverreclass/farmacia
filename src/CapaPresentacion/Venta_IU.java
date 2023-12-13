@@ -13,6 +13,7 @@ import CapaDatos.DetalleVenta;
 import CapaDatos.EntradaProducto;
 import CapaDatos.Kardex;
 import CapaDatos.Venta;
+import CapaNegocio.AjustarColumnasJTable;
 import CapaNegocio.ClienteBD;
 import CapaNegocio.CorrelativoBD;
 import CapaNegocio.DetalleCajaBD;
@@ -64,6 +65,7 @@ public class Venta_IU extends javax.swing.JInternalFrame {
         sacarFecha();
         sacarHora();
         sacarNro();
+        AjustarColumnasJTable.ajustarAnchoColumnas(tabla_ventas);
     }
 
     private void limpiar_tabla_formulario() {
@@ -155,6 +157,7 @@ public class Venta_IU extends javax.swing.JInternalFrame {
         txtProducto.setText("");
         limpiar_tabla_formulario();
         sacarNro();
+
     }
 
     /**
@@ -705,7 +708,7 @@ public class Venta_IU extends javax.swing.JInternalFrame {
                     int cantPedido = Integer.parseInt(tabla_temporal_ventas.getValueAt(i, 3).toString());
                     double stockPresentacionBD = Double.parseDouble(tabla_temporal_entradaproducto.getValueAt(0, 12).toString());
                     double quedaPresentacion = stockPresentacionBD - cantPedido;
-                    double ref = Double.parseDouble(tabla_temporal_entradaproducto.getValueAt(0, 21).toString());
+                    double ref = Double.parseDouble(tabla_temporal_entradaproducto.getValueAt(0, 22).toString());
                     double quedaEquivalencia = (quedaPresentacion * ref);
 
                     oEP.setStockPresentacion(quedaPresentacion);
@@ -715,7 +718,7 @@ public class Venta_IU extends javax.swing.JInternalFrame {
                     int cantPedido = Integer.parseInt(tabla_temporal_ventas.getValueAt(i, 3).toString());
                     double stockUnidadesBD = Double.parseDouble(tabla_temporal_entradaproducto.getValueAt(0, 13).toString());
                     double quedaEquivalencia = stockUnidadesBD - cantPedido;
-                    double ref = Double.parseDouble(tabla_temporal_entradaproducto.getValueAt(0, 21).toString());
+                    double ref = Double.parseDouble(tabla_temporal_entradaproducto.getValueAt(0, 22).toString());
                     double stockQuedaPresentacion = (quedaEquivalencia / ref);
 
                     oEP.setStockPresentacion(stockQuedaPresentacion);
@@ -830,8 +833,7 @@ public class Venta_IU extends javax.swing.JInternalFrame {
             parametro.put("usuario", Login_IU.usuario);
             parametro.put("id_venta", idventa);
             parametro.put("logo", this.getClass().getResourceAsStream(logo));
-            
-            
+
             reportStream = Venta_IU.class.getResourceAsStream(ruta);
             reporte = (JasperReport) JRLoader.loadObject(reportStream);
 
@@ -938,6 +940,7 @@ public class Venta_IU extends javax.swing.JInternalFrame {
         Dimension b = frame.getSize();
         frame.setLocation((a.width - b.width) / 2, (a.height - b.height) / 2);
         frame.show();
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnQuitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarActionPerformed

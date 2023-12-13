@@ -8,11 +8,14 @@ package CapaPresentacion;
 import CapaConexion.Conexion;
 import CapaDatos.EntradaProducto;
 import CapaDatos.Venta;
+import CapaNegocio.AjustarColumnasJTable;
+import CapaNegocio.ColorearColumnasJTable;
 import CapaNegocio.DetalleCajaBD;
 import CapaNegocio.DetalleVentaBD;
 import CapaNegocio.EntradaProductoBD;
 import CapaNegocio.KardexBD;
 import CapaNegocio.VentaBD;
+import static CapaPresentacion.Venta_IU.tabla_ventas;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.io.InputStream;
@@ -448,11 +451,12 @@ public class AnularVenta_IU extends javax.swing.JInternalFrame {
                     txtPagoCon.setText(tabla_temporal.getValueAt(0, 12).toString());
                     txtVuelto.setText(tabla_temporal.getValueAt(0, 13).toString());
                     txtUsuario.setText(Login_IU.usuario);
-                    idventa=Integer.parseInt(tabla_temporal.getValueAt(0, 0).toString());
+                    idventa = Integer.parseInt(tabla_temporal.getValueAt(0, 0).toString());
                     DetalleVentaBD oDetalleVentaBD = new DetalleVentaBD();
                     tabla_temporal = oDetalleVentaBD.buscarDetalleVenta(idventa);
                     tabla_temporal_ventas = (DefaultTableModel) tabla_reporte_venta.getModel();
                     cant = tabla_temporal.getRowCount();
+                    AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reporte_venta);
                     for (int i = 0; i < cant; i++) {
                         String serie = tabla_temporal.getValueAt(i, 1).toString();
                         String producto = tabla_temporal.getValueAt(i, 2).toString();
@@ -464,8 +468,15 @@ public class AnularVenta_IU extends javax.swing.JInternalFrame {
                         String idep = tabla_temporal.getValueAt(i, 8).toString();
                         Object[] data = {serie, producto, cantidad, medida, precio, descuento, importe, idep};
                         tabla_temporal_ventas.addRow(data);
+
+                        AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reporte_venta);
                     }
 
+                    ColorearColumnasJTable co15 = new ColorearColumnasJTable(1, Color.YELLOW);
+                    ColorearColumnasJTable co17 = new ColorearColumnasJTable(6, Color.PINK);
+
+                    tabla_reporte_venta.getColumnModel().getColumn(1).setCellRenderer(co15);
+                    tabla_reporte_venta.getColumnModel().getColumn(6).setCellRenderer(co17);
                 } else {
                     error("No se encontro datos...");
                     limpiar();
@@ -496,9 +507,9 @@ public class AnularVenta_IU extends javax.swing.JInternalFrame {
                         String presentacion = tabla_temporal_entradaproducto.getValueAt(0, 9).toString();
                         String equivalencia = tabla_temporal_entradaproducto.getValueAt(0, 10).toString();
                         if (presentacion.equals(equivalencia)) {
-                            int cantPedido = (int)Double.parseDouble(tabla_temporal_ventas.getValueAt(i, 2).toString());
+                            int cantPedido = (int) Double.parseDouble(tabla_temporal_ventas.getValueAt(i, 2).toString());
                             int stockUnidadesBD = Integer.parseInt(tabla_temporal_entradaproducto.getValueAt(0, 13).toString());
-                            double quedaEquivalencia = stockUnidadesBD +cantPedido;
+                            double quedaEquivalencia = stockUnidadesBD + cantPedido;
                             oEP.setStockPresentacion(0);
                             oEP.setStockEquivalencia((int) quedaEquivalencia);
                             oEP.setIdep(idep);
@@ -506,20 +517,20 @@ public class AnularVenta_IU extends javax.swing.JInternalFrame {
                         } else {
                             String medidaEscogidaVenta = tabla_temporal_ventas.getValueAt(i, 3).toString();
                             if (presentacion.equals(medidaEscogidaVenta)) {
-                                int cantPedido = (int)Double.parseDouble(tabla_temporal_ventas.getValueAt(i, 2).toString());
+                                int cantPedido = (int) Double.parseDouble(tabla_temporal_ventas.getValueAt(i, 2).toString());
                                 double stockPresentacionBD = Double.parseDouble(tabla_temporal_entradaproducto.getValueAt(0, 12).toString());
                                 double quedaPresentacion = stockPresentacionBD + cantPedido;
-                                double ref = Double.parseDouble(tabla_temporal_entradaproducto.getValueAt(0, 21).toString());
+                                double ref = Double.parseDouble(tabla_temporal_entradaproducto.getValueAt(0, 22).toString());
                                 double quedaEquivalencia = (quedaPresentacion * ref);
 
                                 oEP.setStockPresentacion(quedaPresentacion);
                                 oEP.setStockEquivalencia((int) quedaEquivalencia);
                                 oEP.setIdep(idep);
                             } else {
-                                int cantPedido = (int)Double.parseDouble(tabla_temporal_ventas.getValueAt(i, 2).toString());
+                                int cantPedido = (int) Double.parseDouble(tabla_temporal_ventas.getValueAt(i, 2).toString());
                                 int stockUnidadesBD = Integer.parseInt(tabla_temporal_entradaproducto.getValueAt(0, 13).toString());
                                 double quedaEquivalencia = stockUnidadesBD + cantPedido;
-                                double ref = Double.parseDouble(tabla_temporal_entradaproducto.getValueAt(0, 21).toString());
+                                double ref = Double.parseDouble(tabla_temporal_entradaproducto.getValueAt(0, 22).toString());
                                 double stockQuedaPresentacion = (quedaEquivalencia / ref);
 
                                 oEP.setStockPresentacion(stockQuedaPresentacion);
@@ -580,8 +591,7 @@ public class AnularVenta_IU extends javax.swing.JInternalFrame {
             parametro.put("usuario", Login_IU.usuario);
             parametro.put("id_venta", idventa);
             parametro.put("logo", this.getClass().getResourceAsStream(logo));
-            
-            
+
             reportStream = AnularVenta_IU.class.getResourceAsStream(ruta);
             reporte = (JasperReport) JRLoader.loadObject(reportStream);
 
@@ -611,9 +621,9 @@ public class AnularVenta_IU extends javax.swing.JInternalFrame {
 
     private void cmbDocumentoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbDocumentoKeyPressed
         // TODO add your handling code here:
-       if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txtCorrelativo.requestFocus();
-        } 
+        }
     }//GEN-LAST:event_cmbDocumentoKeyPressed
 
     private void txtCorrelativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorrelativoKeyPressed

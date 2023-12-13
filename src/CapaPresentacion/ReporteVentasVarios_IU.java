@@ -6,8 +6,12 @@
 package CapaPresentacion;
 
 import CapaConexion.Conexion;
+import CapaNegocio.AjustarColumnasJTable;
+import CapaNegocio.ColorearColumnasJTable;
 import CapaNegocio.DetalleCompraBD;
+import CapaNegocio.DetalleVentaBD;
 import CapaNegocio.VentaBD;
+import static CapaPresentacion.Venta_IU.tabla_ventas;
 import java.awt.Color;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -37,6 +41,7 @@ public class ReporteVentasVarios_IU extends javax.swing.JInternalFrame {
 
     public ReporteVentasVarios_IU() {
         initComponents();
+        
     }
 
     private void limpiar_tabla_formulario() {
@@ -443,11 +448,19 @@ public class ReporteVentasVarios_IU extends javax.swing.JInternalFrame {
     private void tabla_reporte_ventasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_reporte_ventasMousePressed
         // TODO add your handling code here:
         int fila = tabla_reporte_ventas.getSelectedRow();
-        DetalleCompraBD oDetalleCompraBD = new DetalleCompraBD();
+        DetalleVentaBD oDetalleCompraBD = new DetalleVentaBD();
         int idcompra = Integer.parseInt(tabla_temporal_ventas.getValueAt(fila, 0).toString());
 
-        tabla_temporal_detalle_ventas = oDetalleCompraBD.buscarDetallesCompra(idcompra);
+        tabla_temporal_detalle_ventas = oDetalleCompraBD.buscarDetalleVenta(idcompra);
         tabla_reporte_detalle_ventas.setModel(tabla_temporal_detalle_ventas);
+
+        AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reporte_detalle_ventas);
+
+        ColorearColumnasJTable co15 = new ColorearColumnasJTable(1, Color.YELLOW);
+        ColorearColumnasJTable co17 = new ColorearColumnasJTable(5, Color.PINK);
+
+        tabla_reporte_ventas.getColumnModel().getColumn(1).setCellRenderer(co15);
+        tabla_reporte_ventas.getColumnModel().getColumn(5).setCellRenderer(co17);
     }//GEN-LAST:event_tabla_reporte_ventasMousePressed
 
     private void txtCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCerrarActionPerformed
@@ -522,6 +535,13 @@ public class ReporteVentasVarios_IU extends javax.swing.JInternalFrame {
                         Object[] data = {idventa, cliente, documento, correlativo, totalPagar, fecha, estado};
                         tabla_temporal_ventas.addRow(data);
 
+                        AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reporte_ventas);
+                        AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reporte_detalle_ventas);
+        ColorearColumnasJTable co15 = new ColorearColumnasJTable(1, Color.YELLOW);
+        ColorearColumnasJTable co17 = new ColorearColumnasJTable(5, Color.PINK);
+
+        tabla_reporte_ventas.getColumnModel().getColumn(1).setCellRenderer(co15);
+        tabla_reporte_ventas.getColumnModel().getColumn(5).setCellRenderer(co17);
                     }
                     tabla_reporte_ventas.setModel(tabla_temporal_ventas);
                     double total = dineroRecaudado();
@@ -529,6 +549,13 @@ public class ReporteVentasVarios_IU extends javax.swing.JInternalFrame {
                     DecimalFormat df = new DecimalFormat("#.#", symbols);
                     String df_total = df.format(total);
                     txtDineroRecadadoVentasContado.setText(String.valueOf(df_total));
+                    AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reporte_ventas);
+                    AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reporte_detalle_ventas);
+        ColorearColumnasJTable co15 = new ColorearColumnasJTable(1, Color.YELLOW);
+        ColorearColumnasJTable co17 = new ColorearColumnasJTable(5, Color.PINK);
+
+        tabla_reporte_ventas.getColumnModel().getColumn(1).setCellRenderer(co15);
+        tabla_reporte_ventas.getColumnModel().getColumn(5).setCellRenderer(co17);
                 } else {
                     advertencia("Ingrese la fecha de inicio");
                 }
@@ -607,7 +634,13 @@ public class ReporteVentasVarios_IU extends javax.swing.JInternalFrame {
                         String estado = tabla_temporal.getValueAt(i, 7).toString();
                         Object[] data = {idventa, cliente, documentoo, correlativo, totalPagar, fecha, estado};
                         tabla_temporal_ventas.addRow(data);
+                        AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reporte_ventas);
+                        AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reporte_detalle_ventas);
+        ColorearColumnasJTable co15 = new ColorearColumnasJTable(1, Color.YELLOW);
+        ColorearColumnasJTable co17 = new ColorearColumnasJTable(5, Color.PINK);
 
+        tabla_reporte_ventas.getColumnModel().getColumn(1).setCellRenderer(co15);
+        tabla_reporte_ventas.getColumnModel().getColumn(5).setCellRenderer(co17);
                     }
                     tabla_reporte_ventas.setModel(tabla_temporal_ventas);
                     double total = dineroRecaudado();
@@ -615,6 +648,13 @@ public class ReporteVentasVarios_IU extends javax.swing.JInternalFrame {
                     DecimalFormat df = new DecimalFormat("#.#", symbols);
                     String df_total = df.format(total);
                     txtDineroRecaudadoDocumento.setText("" + df_total);
+                    AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reporte_ventas);
+                    AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reporte_detalle_ventas);
+        ColorearColumnasJTable co15 = new ColorearColumnasJTable(1, Color.YELLOW);
+        ColorearColumnasJTable co17 = new ColorearColumnasJTable(5, Color.PINK);
+
+        tabla_reporte_ventas.getColumnModel().getColumn(1).setCellRenderer(co15);
+        tabla_reporte_ventas.getColumnModel().getColumn(5).setCellRenderer(co17);
                 } else {
                     advertencia("Ingrese la fecha de inicio");
                 }
@@ -698,8 +738,22 @@ public class ReporteVentasVarios_IU extends javax.swing.JInternalFrame {
                         Object[] data = {idventa, cliente, documento, correlativo, totalPagar, fecha, estado};
                         tabla_temporal_ventas.addRow(data);
 
+                        AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reporte_ventas);
+                        AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reporte_detalle_ventas);
+        ColorearColumnasJTable co15 = new ColorearColumnasJTable(1, Color.YELLOW);
+        ColorearColumnasJTable co17 = new ColorearColumnasJTable(5, Color.PINK);
+
+        tabla_reporte_ventas.getColumnModel().getColumn(1).setCellRenderer(co15);
+        tabla_reporte_ventas.getColumnModel().getColumn(5).setCellRenderer(co17);
                     }
                     tabla_reporte_ventas.setModel(tabla_temporal_ventas);
+                    AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reporte_ventas);
+                    AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reporte_detalle_ventas);
+        ColorearColumnasJTable co15 = new ColorearColumnasJTable(1, Color.YELLOW);
+        ColorearColumnasJTable co17 = new ColorearColumnasJTable(5, Color.PINK);
+
+        tabla_reporte_ventas.getColumnModel().getColumn(1).setCellRenderer(co15);
+        tabla_reporte_ventas.getColumnModel().getColumn(5).setCellRenderer(co17);
                 } else {
                     advertencia("Ingrese la fecha de inicio");
                 }
@@ -731,6 +785,8 @@ public class ReporteVentasVarios_IU extends javax.swing.JInternalFrame {
                 Object[] data = {idventa, cliente, documento, correlativo, totalPagar, fecha, estado};
                 tabla_temporal_ventas.addRow(data);
 
+                AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reporte_ventas);
+                AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reporte_detalle_ventas);
             }
             tabla_reporte_ventas.setModel(tabla_temporal_ventas);
             double total = dineroRecaudado();
@@ -738,6 +794,13 @@ public class ReporteVentasVarios_IU extends javax.swing.JInternalFrame {
             DecimalFormat df = new DecimalFormat("#.#", symbols);
             String df_total = df.format(total);
             txtDineroRecaudadoDocumento.setText("" + df_total);
+            AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reporte_ventas);
+            AjustarColumnasJTable.ajustarAnchoColumnas(tabla_reporte_detalle_ventas);
+        ColorearColumnasJTable co15 = new ColorearColumnasJTable(1, Color.YELLOW);
+        ColorearColumnasJTable co17 = new ColorearColumnasJTable(5, Color.PINK);
+
+        tabla_reporte_ventas.getColumnModel().getColumn(1).setCellRenderer(co15);
+        tabla_reporte_ventas.getColumnModel().getColumn(5).setCellRenderer(co17);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -751,7 +814,7 @@ public class ReporteVentasVarios_IU extends javax.swing.JInternalFrame {
 
     private void txtClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtClienteFocusLost
         // TODO add your handling code here:
-        
+
         txtCliente.setBackground(Color.white);
     }//GEN-LAST:event_txtClienteFocusLost
 

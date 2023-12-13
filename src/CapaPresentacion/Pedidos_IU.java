@@ -6,6 +6,7 @@
 package CapaPresentacion;
 
 import CapaNegocio.AjustarColumnasJTable;
+import CapaNegocio.ColorearColumnasJTable;
 import CapaNegocio.EntradaProductoBD;
 import CapaNegocio.ProductoBD;
 import static CapaPresentacion.Menuu_IU.escritorioo;
@@ -71,8 +72,8 @@ public class Pedidos_IU extends javax.swing.JInternalFrame {
         bgPresentacion.clearSelection();
         rbPresentacion.setSelected(false);
         rbEquivalencia.setSelected(false);
-        medida_seleccionada="";
-        precio_seleccionado=0.0;
+        medida_seleccionada = "";
+        precio_seleccionado = 0.0;
     }
 
     /**
@@ -225,23 +226,26 @@ public class Pedidos_IU extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(68, 68, 68)
-                        .addComponent(jLabel4)
-                        .addGap(77, 77, 77)
-                        .addComponent(jLabel5))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPresentacion)
-                            .addComponent(lblEquivalencia))
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtStockEquivalencia, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtStockPresetacion, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPrecioVentaPresentacion, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                            .addComponent(txtPrecioVentaEquivalencia))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(68, 68, 68)
+                                .addComponent(jLabel4)
+                                .addGap(77, 77, 77)
+                                .addComponent(jLabel5))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblPresentacion)
+                                    .addComponent(lblEquivalencia))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtStockEquivalencia, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtStockPresetacion, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtPrecioVentaPresentacion)
+                                    .addComponent(txtPrecioVentaEquivalencia, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -255,19 +259,21 @@ public class Pedidos_IU extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPresentacion)
-                            .addComponent(txtStockPresetacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtStockEquivalencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEquivalencia)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtPrecioVentaPresentacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPrecioVentaEquivalencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblPresentacion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblEquivalencia))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(txtStockPresetacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtStockEquivalencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtPrecioVentaEquivalencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(txtPrecioVentaPresentacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(26, 26, 26))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -464,29 +470,30 @@ public class Pedidos_IU extends javax.swing.JInternalFrame {
                     tabla_temporal_pedidos.addRow(data);
                     AjustarColumnasJTable.ajustarAnchoColumnas(tabla_pedidos);
                 }
+                AjustarColumnasJTable.ajustarAnchoColumnas(tabla_pedidos);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
     }//GEN-LAST:event_txtProductoKeyReleased
-private void productoAlternativo(){
-    limpiar_tabla_formulario_pedido_alternativo();
-    DefaultTableModel tabla_temporal_pedidos_alternativos=(DefaultTableModel) tabla_pedidos_alternativos.getModel();
-    EntradaProductoBD oEntradaProductoBD= new EntradaProductoBD();
-    String serie=tabla_pedidos.getValueAt(fila_seleccionada, 0).toString();
-    DefaultTableModel tabla_temporal_alternativos;
-    tabla_temporal_alternativos=oEntradaProductoBD.buscarProductoAlternativos(serie);
-    int cant=tabla_temporal_alternativos.getRowCount();
-    for (int i = 0; i < cant; i++) {
-        serie=tabla_temporal_alternativos.getValueAt(i, 0).toString();
-        String descripcion=tabla_temporal_alternativos.getValueAt(i, 1).toString();
-        String presentacion=tabla_temporal_alternativos.getValueAt(i, 2).toString();
-        String fecha_vcto=tabla_temporal_alternativos.getValueAt(i, 3).toString();
-        
-        Object[]dataAlternativos={serie,descripcion,presentacion,fecha_vcto};
-        tabla_temporal_pedidos_alternativos.addRow(dataAlternativos);
+    private void productoAlternativo() {
+        limpiar_tabla_formulario_pedido_alternativo();
+        DefaultTableModel tabla_temporal_pedidos_alternativos = (DefaultTableModel) tabla_pedidos_alternativos.getModel();
+        EntradaProductoBD oEntradaProductoBD = new EntradaProductoBD();
+        String serie = tabla_pedidos.getValueAt(fila_seleccionada, 0).toString();
+        DefaultTableModel tabla_temporal_alternativos;
+        tabla_temporal_alternativos = oEntradaProductoBD.buscarProductoAlternativos(serie);
+        int cant = tabla_temporal_alternativos.getRowCount();
+        for (int i = 0; i < cant; i++) {
+            serie = tabla_temporal_alternativos.getValueAt(i, 0).toString();
+            String descripcion = tabla_temporal_alternativos.getValueAt(i, 1).toString();
+            String presentacion = tabla_temporal_alternativos.getValueAt(i, 2).toString();
+            String fecha_vcto = tabla_temporal_alternativos.getValueAt(i, 3).toString();
+
+            Object[] dataAlternativos = {serie, descripcion, presentacion, fecha_vcto};
+            tabla_temporal_pedidos_alternativos.addRow(dataAlternativos);
+        }
     }
-}
     private void tabla_pedidosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_pedidosMousePressed
         // TODO add your handling code here:
         limpiaPrecios();
@@ -591,20 +598,32 @@ private void productoAlternativo(){
                             double cantStockPresentacion = Double.parseDouble(tabla_temporal.getValueAt(fila_seleccionada, 12).toString());
                             quedaPresentacion = cantStockPresentacion - cantPedido;
                             double ref = Integer.parseInt(tabla_temporal.getValueAt(fila_seleccionada, 22).toString());
-                            quedaEquivalencia=quedaPresentacion*ref;
+                            quedaEquivalencia = quedaPresentacion * ref;
                             if (quedaPresentacion >= 0 || quedaEquivalencia >= 0) {
                                 enviar(medida_seleccionada);
                                 limpiaPrecios();
+                                AjustarColumnasJTable.ajustarAnchoColumnas(tabla_ventas);
+                                ColorearColumnasJTable co15 = new ColorearColumnasJTable(1, Color.YELLOW);
+                                ColorearColumnasJTable co17 = new ColorearColumnasJTable(5, Color.PINK);
+
+                                tabla_ventas.getColumnModel().getColumn(1).setCellRenderer(co15);
+                                tabla_ventas.getColumnModel().getColumn(5).setCellRenderer(co17);
                             } else {
                                 JOptionPane.showMessageDialog(this, "No hay la cantidad que solicita...");
                             }
                         } else {
-                            medida_seleccionada=rbEquivalencia.getText();
-                            int cantStockEquivalencia=Integer.parseInt(tabla_temporal.getValueAt(fila_seleccionada, 13).toString());
-                            quedaEquivalencia=cantStockEquivalencia-cantPedido;
-                            if (quedaEquivalencia>-1) {
+                            medida_seleccionada = rbEquivalencia.getText();
+                            int cantStockEquivalencia = Integer.parseInt(tabla_temporal.getValueAt(fila_seleccionada, 13).toString());
+                            quedaEquivalencia = cantStockEquivalencia - cantPedido;
+                            if (quedaEquivalencia > -1) {
                                 enviar(medida_seleccionada);
                                 limpiaPrecios();
+                                AjustarColumnasJTable.ajustarAnchoColumnas(tabla_ventas);
+                                ColorearColumnasJTable co15 = new ColorearColumnasJTable(1, Color.YELLOW);
+                                ColorearColumnasJTable co17 = new ColorearColumnasJTable(5, Color.PINK);
+
+                                tabla_ventas.getColumnModel().getColumn(1).setCellRenderer(co15);
+                                tabla_ventas.getColumnModel().getColumn(5).setCellRenderer(co17);
                             } else {
                                 JOptionPane.showMessageDialog(this, "No hay la cantidad que solicita...");
                             }
@@ -641,25 +660,25 @@ private void productoAlternativo(){
 
     private void txtProductoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtProductoFocusGained
         // TODO add your handling code here:
-        
+
         txtProducto.setBackground(Color.yellow);
     }//GEN-LAST:event_txtProductoFocusGained
 
     private void txtProductoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtProductoFocusLost
         // TODO add your handling code here:
-        
+
         txtProducto.setBackground(Color.white);
     }//GEN-LAST:event_txtProductoFocusLost
 
     private void txtCantidadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCantidadFocusGained
         // TODO add your handling code here:
-        
+
         txtCantidad.setBackground(Color.yellow);
     }//GEN-LAST:event_txtCantidadFocusGained
 
     private void txtCantidadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCantidadFocusLost
         // TODO add your handling code here:
-        
+
         txtCantidad.setBackground(Color.white);
     }//GEN-LAST:event_txtCantidadFocusLost
 
